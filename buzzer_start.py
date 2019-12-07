@@ -7,7 +7,7 @@ from math import pi, sin
 factory = PiGPIOFactory(host='pi912.local')
 buzzer = Buzzer(4, active_high=False, pin_factory=factory)
 
-buzzer.value=0;
+buzzer.off()
 sleep(2)
 # buzzer.on()
 # sleep(2)
@@ -18,13 +18,13 @@ sleep(2)
 # # buzzer.off()
 # print(buzzer.is_active)
 
-step = 0.1
-
+step = 0.3
+x = 0
 while True:
-    x = 0
+
     if x >= pi :
         x = 0
-    buzzer.value = x
+    buzzer.value = sin(x);
     sleep(1)
     x = x + step
     print(buzzer.value)
